@@ -13,14 +13,15 @@ class Bank(object):
 class CurrentAccount(Bank):
 
     def __init__(self):
-        self.amount = 500
+        self.__minimalBalance = 500
+        self.amount = self.__minimalBalance
 
     def deposit(self, amnt):
         if amnt > 0:
             self.amount += amnt
 
     def withdraw(self, amnt):
-        if amnt > 0 and (self.amount - amnt) >= 500:
+        if amnt > 0 and (self.amount - amnt) >= self.__minimalBalance:
             self.amount -= amnt
 
     def withdraw_limit(self):
